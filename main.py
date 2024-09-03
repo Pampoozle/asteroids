@@ -1,7 +1,10 @@
 import pygame
 
+from asteroid import Asteroid
 from constants import *
 from player import *
+from asteroidfield import AsteroidField
+
 
 
 def main():
@@ -16,9 +19,14 @@ def main():
     #GROUPS
     updatable = pygame.sprite.Group()
     drawable = pygame.sprite.Group()
+    asteroids = pygame.sprite.Group()
     Player.containers = (updatable, drawable)
+    Asteroid.containers = (asteroids,updatable,drawable)
+    AsteroidField.containers = (updatable)
 
+    #INITIALISATION
     player = Player((SCREEN_WIDTH/2), (SCREEN_HEIGHT/2))
+    asteroid_field = AsteroidField()
     dt = 0
 
     #GAME LOOP
